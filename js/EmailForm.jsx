@@ -1,6 +1,6 @@
 var React = require('react');
-var ReactDOM = require('react-dom');
-var redux = require('react-redux');
+// var ReactDOM = require('react-dom');
+// var redux = require('react-redux');
 
 
 var EmailForm = React.createClass({
@@ -40,4 +40,4 @@ var EmailForm = React.createClass({
 }
 });
 
-module.Exports = EmailForm;
+module.exports = EmailForm;
