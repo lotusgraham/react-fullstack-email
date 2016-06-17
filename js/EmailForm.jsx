@@ -1,7 +1,8 @@
 var React = require('react');
 // var ReactDOM = require('react-dom');
 // var redux = require('react-redux');
-
+var connect = require('react-redux').connect;
+var actions = require('../actions');
 
 var EmailForm = React.createClass({
    getInitialState: function() {
@@ -9,9 +10,13 @@ var EmailForm = React.createClass({
     },
     handleChange: function(event) {
       this.setState({value: event.target.value});
+      var eachCharacter = this.state.value;
+      this.props.dispatch(actions.realtimeUpdate(eachCharacter));
+      // 3 .dispatch() action that the Email has changed and what it's changed to
    },
    handleClick: function() {
-      console.log(this.state.value);
+      var emailAddress = this.state.value;
+      this.props.dispatch(actions.addEmail(emailAddress));
    },
     render:function(){
    return (
@@ -40,4 +45,15 @@ var EmailForm = React.createClass({
 }
 });
 
-module.exports = EmailForm;
+var mapStateToProps = function(state, props) {
+    return {
+        email: state
+    };
+};
+
+
+var Container = connect(mapStateToProps)(EmailForm);
+
+
+// module.exports = EmailForm;
+module.exports = Container;
