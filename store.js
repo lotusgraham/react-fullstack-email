@@ -5,5 +5,5 @@ var thunk = require('redux-thunk').default;
 
 var reducers = require('./reducers');
 
-var store = createStore(reducers.repositoryReducer, applyMiddleware(thunk));
+var store = createStore(reducers.emailReducer, applyMiddleware(thunk));
 module.exports  = store;
